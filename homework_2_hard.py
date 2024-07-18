@@ -12,7 +12,6 @@ def prov_del(n):
     print("Результат:",result)
 n = input("Введите число от 3 до 20:")
 n = int(n)
-print(n)
 while n < 3 or n > 20:
     n = input("Введите другое число:")
     n = int(n)
