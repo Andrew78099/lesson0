@@ -10,6 +10,8 @@ def prov_del(n):
     for b in seq:
         result = result + str(b)
     print("Результат:",result)
+
+
 n = input("Введите число от 3 до 20:")
 n = int(n)
 while n < 3 or n > 20:
