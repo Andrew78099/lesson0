@@ -3,16 +3,17 @@ class Car:
         self.model = model
         self.__vin = __vin
         self.__numbers = __numbers
+        self.__is_valid_vin()
+        self.__is_valid_numbers()
 
-    def __is_valid_vin(vin_number):
-        print(vin_number)
-        if isinstance(vin_number, int) and 1000000 <= vin_number <= 9999999:
+    def __is_valid_vin(self):
+        if isinstance(self.__vin, int) and 1000000 <= self.__vin <= 9999999:
             return True
         else:
             raise IncorrectVinNumber('Некорректный тип vin номер')
 
-    def __is_valid_numbers(numbers):
-        if isinstance(numbers, str) and len(numbers) == 6:
+    def __is_valid_numbers(self):
+        if isinstance(self.__numbers, str) and len(self.__numbers) == 6:
             return True
         else:
                 raise IncorrectCarNumbers('Неверная длина номера')
