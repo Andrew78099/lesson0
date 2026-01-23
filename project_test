@@ -1,0 +1,64 @@
+from tkinter import *
+import tkinter as tk
+from tkinter import ttk
+
+
+
+class button1():
+    def __init__(self):
+        super().__init__()
+        self.button = window.button(self, text="закрыть")
+        self.button["command"] = self.button_clicked
+        self.button.pack(anchor="center", expand=1)
+
+
+#window = tk.Tk()
+#window.geometry('800x600')
+#window.title('Программа')
+#button = tk.Button(text="Нажми меня", command=window.destroy)
+#window.mainloop()
+
+def button1_click():
+    global f1
+    if f1 is True:
+        window.geometry('640x480')
+        f1 = False
+    else:
+        window.geometry('1200x1000')
+        f1 = True
+    return f1
+
+
+def label1():
+    srch1 = "Searching: " + entry1.get()
+    with open('text1.txt', 'a') as file1:
+        file1.write('Привет, мир!'+ srch1+'\n')
+    print(srch1)
+    label2 = Label(frm, text=srch1).grid(column=1, row=2)
+    entry1.grid(column=0, row=1)
+
+
+f1 = bool, False
+window = Tk()
+window.geometry('640x480')
+window.title('Программа')
+frm = ttk.Frame(window, padding=10)
+frm.grid()
+
+menu = Menu(window)
+item = Menu(menu)
+item.add_command(label='New')
+item.add_command(label='Open')
+item.add_command(label='Save')
+menu.add_cascade(label='File', menu=item)
+window.config(menu=menu)
+
+ttk.Label(frm, text="Hello World!").grid(column=10, row=2)
+entry1 = ttk.Entry()
+#for i in range(9) :
+#   ttk.Button(frm, text="Quit", command=window.destroy).grid(column=i, row=i)
+ttk.Button(frm, text="Resize", command=button1_click).grid(column=1, row=0)
+ttk.Button(frm, text="Quit", command=window.destroy).grid(column=2, row=0)
+ttk.Button(frm, text="Search", command=label1).grid(column=2, row=1)
+
+window.mainloop()
