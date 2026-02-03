@@ -1,7 +1,26 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
+import sqlite3
 
+
+#Работа с SQLite в Python https://habr.com/ru/articles/754400/
+connection = sqlite3.connect('my_database.db')
+cursor = connection.cursor()
+
+# Создаем таблицу Users
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS Users (
+id INTEGER PRIMARY KEY,
+username TEXT NOT NULL,
+email TEXT NOT NULL,
+age INTEGER
+)
+''')
+
+# Сохраняем изменения и закрываем соединение
+connection.commit()
+connection.close()
 
 
 class button1():
